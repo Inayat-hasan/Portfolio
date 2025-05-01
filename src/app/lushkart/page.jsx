@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import {
   ShoppingCart,
   CreditCard,
@@ -393,19 +392,19 @@ const page = () => {
             </div>
           </div>
           <div
-            className={`relative rounded-xl overflow-hidden ${
-              darkMode ? "shadow-teal-900/30" : "shadow-xl"
-            } h-80 group`}
+            className={`relative rounded-xl overflow-hidden h-80 group ${
+              darkMode ? "shadow-lg shadow-teal-900/30" : "shadow-xl"
+            }`}
           >
-            {/* Replace with your actual Lushkart homepage image */}
-            <Image
-              src="/lushkart/main.png"
-              alt="Lushkart Homepage"
-              fill
-              style={{ objectFit: "cover" }}
-              className="group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent opacity-70"></div>
+            <div className="relative w-full h-full">
+              <img
+                src="/lushkart/main.png"
+                alt="Lushkart Homepage"
+                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/40 to-transparent opacity-80"></div>
           </div>
         </div>
 
@@ -520,204 +519,235 @@ const page = () => {
           >
             Project Screenshots
           </h2>
+
           <div className="grid md:grid-cols-2 gap-6">
-            {/* Example image - replace with your actual screenshots */}
-            <div className="relative rounded-xl overflow-hidden h-64 shadow-md group">
-              <Image
-                src="/lushkart/product-page.png"
-                alt="Lushkart Product Page"
-                fill
-                style={{ objectFit: "cover" }}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
+            {[
+              {
+                src: "/lushkart/product-page.png",
+                alt: "Lushkart Product Page",
+                label: "Product Page",
+              },
+              {
+                src: "/lushkart/cart.png",
+                alt: "Lushkart Shopping Cart",
+                label: "Shopping Cart",
+              },
+              {
+                src: "/lushkart/admin-dashboard.png",
+                alt: "Lushkart Admin Dashboard",
+                label: "Admin Dashboard",
+              },
+              {
+                src: "/lushkart/payment.png",
+                alt: "Lushkart Payment Process",
+                label: "Payment Process",
+              },
+            ].map((item, index) => (
               <div
-                className={`absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end`}
+                key={index}
+                className="relative rounded-xl overflow-hidden h-64 shadow-md group"
               >
-                <p className="text-white font-medium p-4">Product Page</p>
+                {/* Image with optimized loading */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                {/* Gradient overlay with smooth transition */}
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 via-teal-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <p className="text-white font-medium text-lg drop-shadow-md">
+                    {item.label}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="relative rounded-xl overflow-hidden h-64 shadow-md group">
-              <Image
-                src="/lushkart/cart.png"
-                alt="Lushkart Shopping Cart"
-                fill
-                style={{ objectFit: "cover" }}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-              <div
-                className={`absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end`}
-              >
-                <p className="text-white font-medium p-4">Shopping Cart</p>
-              </div>
-            </div>
-            <div className="relative rounded-xl overflow-hidden h-64 shadow-md group">
-              <Image
-                src="/lushkart/admin-dashboard.png"
-                alt="Lushkart Admin Dashboard"
-                fill
-                style={{ objectFit: "cover" }}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-              <div
-                className={`absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end`}
-              >
-                <p className="text-white font-medium p-4">Admin Dashboard</p>
-              </div>
-            </div>
-            <div className="relative rounded-xl overflow-hidden h-64 shadow-md group">
-              <Image
-                src="/lushkart/payment.png"
-                alt="Lushkart Payment Process"
-                fill
-                style={{ objectFit: "cover" }}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-              <div
-                className={`absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end`}
-              >
-                <p className="text-white font-medium p-4">Payment Process</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Detailed Feature Sections */}
         <div className="space-y-20">
           {/* Admin Dashboard Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Text Content */}
+            <div className="order-2 md:order-1 space-y-6">
               <h3
-                className={`text-2xl font-bold ${
+                className={`text-2xl md:text-3xl font-bold ${
                   darkMode ? "text-teal-300" : "text-teal-800"
-                } mb-4`}
+                }`}
               >
                 Admin Dashboard
               </h3>
               <ul
                 className={`space-y-4 ${
-                  darkMode ? "text-gray-300" : "text-gray-600"
+                  darkMode ? "text-gray-300" : "text-gray-700"
                 }`}
               >
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>
-                    Full CRUD operations for products (Create, Read, Update,
-                    Delete)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Inventory management with stock tracking</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Order management system</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>User management capabilities</span>
-                </li>
+                {[
+                  "Full CRUD operations for products (Create, Read, Update, Delete)",
+                  "Inventory management with stock tracking",
+                  "Order management system",
+                  "User management capabilities",
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span
+                      className={`shrink-0 ${
+                        darkMode ? "text-teal-400" : "text-teal-600"
+                      } mt-0.5`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                    <span>{feature}</span>
+                  </li>
+                ))}
               </ul>
             </div>
-            <div className="order-1 md:order-2 relative rounded-xl overflow-hidden shadow-xl h-80 group">
-              <Image
-                src="/lushkart/admin-features.png"
-                alt="Admin Features"
-                fill
-                style={{ objectFit: "cover" }}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent opacity-50"></div>
+
+            {/* Image */}
+            <div className="order-1 md:order-2 relative rounded-xl overflow-hidden shadow-lg h-80 group">
+              <div className="relative h-full w-full">
+                <img
+                  src="/lushkart/admin-features.png"
+                  alt="Admin Dashboard Features"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/30 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300"></div>
+              </div>
             </div>
           </div>
 
           {/* Payment Processing Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-xl overflow-hidden shadow-xl h-80 group">
-              <Image
-                src="/lushkart/payment.png"
-                alt="Payment Process"
-                fill
-                style={{ objectFit: "cover" }}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent opacity-50"></div>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Image Section */}
+            <div className="relative rounded-xl overflow-hidden shadow-lg h-80 group">
+              <div className="relative h-full w-full">
+                <img
+                  src="/lushkart/payment.png"
+                  alt="Secure Payment Process with multiple payment options"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+              </div>
             </div>
-            <div>
+
+            {/* Content Section */}
+            <div className="space-y-6">
               <h3
-                className={`text-2xl font-bold ${
+                className={`text-2xl md:text-3xl font-bold ${
                   darkMode ? "text-teal-300" : "text-teal-800"
-                } mb-4`}
-              >
-                Payment Gateway Integration
-              </h3>
-              <ul
-                className={`space-y-4 ${
-                  darkMode ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Secure payment processing via Cashfree</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Multiple payment methods supported</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Order confirmation and receipt generation</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Transaction history tracking</span>
-                </li>
+                Secure Payment Gateway
+              </h3>
+              <ul
+                className={`space-y-3 ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                {[
+                  "Secure payment processing via Cashfree",
+                  "Multiple payment methods supported",
+                  "Instant order confirmation and receipt generation",
+                  "Complete transaction history tracking",
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span
+                      className={`shrink-0 ${
+                        darkMode ? "text-teal-400" : "text-teal-600"
+                      } mt-0.5`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
 
           {/* Review System Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Content Section */}
+            <div className="space-y-6">
               <h3
-                className={`text-2xl font-bold ${
+                className={`text-2xl md:text-3xl font-bold ${
                   darkMode ? "text-teal-300" : "text-teal-800"
-                } mb-4`}
-              >
-                Product Review System
-              </h3>
-              <ul
-                className={`space-y-4 ${
-                  darkMode ? "text-gray-300" : "text-gray-600"
                 }`}
               >
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Verified purchase reviews only</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Star rating system (1-5 stars)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Text comments and feedback</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-teal-500 mt-1">✓</span>
-                  <span>Admin moderation tools</span>
-                </li>
+                Customer Review System
+              </h3>
+              <ul
+                className={`space-y-3 ${
+                  darkMode ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                {[
+                  "Verified purchase reviews only",
+                  "5-star rating system with detailed feedback",
+                  "Text comments and photo uploads",
+                  "Admin moderation dashboard",
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <span
+                      className={`shrink-0 ${
+                        darkMode ? "text-teal-400" : "text-teal-600"
+                      } mt-0.5`}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                    <span>{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
-            <div className="relative rounded-xl overflow-hidden shadow-xl h-80 group">
-              <Image
-                src="/lushkart/reviews.png"
-                alt="Review System"
-                fill
-                style={{ objectFit: "cover" }}
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-teal-900/70 to-transparent opacity-50"></div>
+
+            {/* Image Section */}
+            <div className="relative rounded-xl overflow-hidden shadow-lg h-80 group">
+              <div className="relative h-full w-full">
+                <img
+                  src="/lushkart/reviews.png"
+                  alt="Customer review interface showing star ratings and comments"
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-teal-900/80 via-teal-900/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
+              </div>
             </div>
           </div>
         </div>

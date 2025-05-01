@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { ArrowUpRight, ChevronRight, Eye, Github } from "lucide-react";
 import { useDarkMode } from "../context/darkModeContext";
 
@@ -23,38 +22,6 @@ const Projects = () => {
       liveLink: "https://lushkart.onrender.com/",
       technologies: ["React", "Node.js", "MongoDB", "Stripe", "Redux"],
     },
-    /*
-    {
-      id: 2,
-      name: "TaskFlow",
-      tagline: "Project Management Tool",
-      description:
-        "A comprehensive project management application with task tracking, team collaboration features, and real-time updates.",
-      color: "bg-blue-800",
-      lightColor: "bg-blue-50",
-      textColor: "text-blue-600",
-      image: "/taskflow/dashboard.png",
-      navigateTo: "/taskflow",
-      githubLink: "https://github.com/yourusername/taskflow",
-      liveLink: "https://taskflow-demo.vercel.app",
-      technologies: ["React", "Firebase", "Material UI", "Chart.js"],
-    },
-    {
-      id: 3,
-      name: "FitTrack",
-      tagline: "Fitness Tracking Application",
-      description:
-        "A mobile-responsive fitness tracking platform that helps users monitor workouts, nutrition, and progress over time.",
-      color: "bg-purple-800",
-      lightColor: "bg-purple-50",
-      textColor: "text-purple-600",
-      image: "/fittrack/main.png",
-      navigateTo: "/fittrack",
-      githubLink: "https://github.com/yourusername/fittrack",
-      liveLink: "https://fittrack-demo.vercel.app",
-      technologies: ["React Native", "Express", "PostgreSQL", "TensorFlow.js"],
-    },
-    */
   ];
 
   const [selectedProject, setSelectedProject] = useState(null);
@@ -102,28 +69,22 @@ const Projects = () => {
                 ${projects.length === 1 ? "mx-auto max-w-4xl" : ""}`}
             >
               {/* Project Image with Overlay */}
-              <div className="relative overflow-hidden">
-                <div className={`absolute inset-0 opacity-90 z-10`}></div>
+              <div className="relative overflow-hidden group">
                 <div className="relative pb-[60%]">
-                  <Image
+                  <img
                     src={project.image}
                     alt={project.name}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    priority
-                    className="transition-transform duration-500 group-hover:scale-105"
+                    className="absolute inset-0 object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-20"></div>
 
-                {/* Project Name Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-30">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10"></div>
+
+                <div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
                   <h3 className="text-3xl font-bold text-white mb-2">
                     {project.name}
                   </h3>
-                  <p className="text-white text-opacity-90">
-                    {project.tagline}
-                  </p>
+                  <p className="text-white/90">{project.tagline}</p>
                 </div>
               </div>
 
