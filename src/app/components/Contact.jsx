@@ -1,6 +1,6 @@
 import emailjs from "@emailjs/browser";
 import { Github, Linkedin, Mail, Send, Twitter } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useDarkMode } from "../context/darkModeContext";
 
@@ -25,10 +25,10 @@ const Contact = () => {
 
     emailjs
       .send(
-        process.env.NEXT_SERVICE_ID,
-        process.env.NEXT_TEMPLATE_ID,
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID,
         formData,
-        process.env.NEXT_PUBLIC_KEY
+        process.env.NEXT_PUBLIC_PUBLIC_KEY
       )
       .then(
         (result) => {
