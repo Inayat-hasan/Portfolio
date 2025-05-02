@@ -19,7 +19,7 @@ import {
 } from "react-feather";
 import { useDarkMode } from "../context/darkModeContext";
 
-const page = () => {
+const Lushkart = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -398,7 +398,7 @@ const page = () => {
           >
             <div className="relative w-full h-full">
               <img
-                src="/lushkart/main.png"
+                src="/images-lushkart/main.png"
                 alt="Lushkart Homepage"
                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
               />
@@ -523,22 +523,22 @@ const page = () => {
           <div className="grid md:grid-cols-2 gap-6">
             {[
               {
-                src: "/lushkart/product-page.png",
+                src: "/images-lushkart/product-page.png",
                 alt: "Lushkart Product Page",
                 label: "Product Page",
               },
               {
-                src: "/lushkart/cart.png",
+                src: "/images-lushkart/cart.png",
                 alt: "Lushkart Shopping Cart",
                 label: "Shopping Cart",
               },
               {
-                src: "/lushkart/admin-dashboard.png",
+                src: "/images-lushkart/admin-dashboard.png",
                 alt: "Lushkart Admin Dashboard",
                 label: "Admin Dashboard",
               },
               {
-                src: "/lushkart/payment.png",
+                src: "/images-lushkart/payment.png",
                 alt: "Lushkart Payment Process",
                 label: "Payment Process",
               },
@@ -619,7 +619,7 @@ const page = () => {
             <div className="order-1 md:order-2 relative rounded-xl overflow-hidden shadow-lg h-80 group">
               <div className="relative h-full w-full">
                 <img
-                  src="/lushkart/admin-features.png"
+                  src="/images-lushkart/admin-features.png"
                   alt="Admin Dashboard Features"
                   loading="lazy"
                   className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
@@ -635,7 +635,7 @@ const page = () => {
             <div className="relative rounded-xl overflow-hidden shadow-lg h-80 group">
               <div className="relative h-full w-full">
                 <img
-                  src="/lushkart/payment.png"
+                  src="/images-lushkart/payment.png"
                   alt="Secure Payment Process with multiple payment options"
                   loading="lazy"
                   className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
@@ -741,7 +741,7 @@ const page = () => {
             <div className="relative rounded-xl overflow-hidden shadow-lg h-80 group">
               <div className="relative h-full w-full">
                 <img
-                  src="/lushkart/reviews.png"
+                  src="/images-lushkart/reviews.png"
                   alt="Customer review interface showing star ratings and comments"
                   loading="lazy"
                   className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
@@ -969,4 +969,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Lushkart;

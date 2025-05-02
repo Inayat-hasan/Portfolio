@@ -15,7 +15,7 @@ const Projects = () => {
       color: "bg-teal-800",
       lightColor: "bg-teal-50",
       textColor: "text-teal-600",
-      image: "/lushkart/main.png",
+      image: "/images-lushkart/main.png",
       navigateTo: "/lushkart",
       githubLink:
         "https://github.com/Inayat-hasan/e-commerce-website/tree/main/frontend",
